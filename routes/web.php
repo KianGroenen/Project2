@@ -20,7 +20,3 @@ Route::post('/students/store', 'StudentsController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-route::get('/artists', 'ArtistsController@index');
-Route::get('/artists/{id}', 'ArtistsController@show');
-Route::get('/albums/{id}', 'AlbumsController@show');
