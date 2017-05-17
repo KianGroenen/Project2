@@ -15,8 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students/create', 'StudentsController@create');
-Route::post('/students/store', 'StudentsController@store');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
+Route::get('users', 'UserController@index');
+Route::post('users/delete/{id}', 'UserController@delete');
+Route::get('user/{id}', 'UserController@edit');
+Route::post('user/{id}/update', 'UserController@update');
+Route::get('users/register', 'UserController@create');
+Route::post('user/store', 'UserController@store');
+
+
+//SPOTIFY
+Route::get('/artists', 'ArtistController@index');
+Route::get('/artists/{id}', 'ArtistController@show');
