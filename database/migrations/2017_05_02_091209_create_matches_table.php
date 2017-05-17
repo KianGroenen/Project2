@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePronotstiekTable extends Migration
+class CreateMatchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePronotstiekTable extends Migration
      */
     public function up()
     {
-        Schema::create('pronostieken', function (Blueprint $table) {
+        Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('date');
             $table->string('team1');
@@ -25,10 +25,7 @@ class CreatePronotstiekTable extends Migration
             $table->string('firstgoal');
             $table->string('corners');
             $table->boolean('penalties');
-            $table->integer('userid')->unsigned();
-            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('matchid')->unsigned();
-            $table->foreign('matchid')->references('id')->on('matches')->onDelete('cascade');
+            $table->string('timegoal1');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -41,6 +38,6 @@ class CreatePronotstiekTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pronostieken');
+        Schema::drop('matches');
     }
 }

@@ -9,7 +9,7 @@
     @if (!empty($errorMessage))
         <div class="errorMessage" style="background-color:red; color:white"> {{ $errorMessage }} </div>
     @endif
-    <a href="users/create" class="btn btn-primary createUser">Nieuwe gebruiker aanmaken</a>
+    <a href="users/register" class="btn btn-primary createUser">Nieuwe gebruiker aanmaken</a>
     <a href="{{url('/profile')}}" class="btn btn-primary createUser">Eigen profiel aanpassen</a>
 
     <div class="panel panel-default">

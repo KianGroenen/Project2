@@ -41,7 +41,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
+        $supporter = '';
+        $id = User::orderBy('id', 'desc')->first()->id;
+        $id++;
 
+        if (!empty($request->input("supporter"))) {
+            $supporter = 1;
+        } else {
+            $supporter = 0;
+        }
         if(!empty($request->input("username")) && !empty($request->input("email")) && !empty($request->input("password"))) {
             if(filter_var($request->input("email"), FILTER_VALIDATE_EMAIL)) {
                 // valid address
@@ -49,10 +57,11 @@ class UserController extends Controller
                 //$request->all()
                     [
                         'username' => $request->input("username"),
-                        'usercode' => bcrypt($request->input("username")),
+                        //'usercode' => bcrypt($request->input("username")),
+                        'usercode' => substr(md5($id),0,8),
                         'email' => $request->input("email"),
                         'password' => bcrypt($request->input("password")),
-                        'supporter' => $request->input("supporter"),
+                        'supporter' => $supporter,
                         'currency' => 0,
                         'admin' => 0,
                         'dailycode' => 1,
