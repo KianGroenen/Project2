@@ -19,10 +19,14 @@ class MatchesTableSeeder extends Seeder
             'victorious' => '',
             'score1' => 0,
             'score2' => 0,
+            'bothteamscore' => 0,
+            'goalguess' => 0,
             'firstgoal' => '',
+            'winwithoutextension' => 0,
+            'cards' => '0',
             'corners' => '',
             'penalties' => 0,
-            'timegoal1' => '',
+            'schiftings' => '',
         ]);
 
         DB::table('matches')->insert([
@@ -33,10 +37,14 @@ class MatchesTableSeeder extends Seeder
             'victorious' => '',
             'score1' => 0,
             'score2' => 0,
+            'bothteamscore' => 0,
+            'goalguess' => 0,
             'firstgoal' => '',
+            'winwithoutextension' => 0,
+            'cards' => '0',
             'corners' => '',
             'penalties' => 0,
-            'timegoal1' => '',
+            'schiftings' => '',
         ]);
 
         DB::table('matches')->insert([
@@ -47,10 +55,14 @@ class MatchesTableSeeder extends Seeder
             'victorious' => '',
             'score1' => 0,
             'score2' => 0,
+            'bothteamscore' => 0,
+            'goalguess' => 0,
             'firstgoal' => '',
+            'winwithoutextension' => 0,
+            'cards' => '0',
             'corners' => '',
             'penalties' => 0,
-            'timegoal1' => '',
+            'schiftings' => '',
         ]);
     }
 }

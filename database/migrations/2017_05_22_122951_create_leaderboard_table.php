@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTable extends Migration
+class CreateLeaderboardTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('leaderboards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
-            $table->string('usercode');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->boolean('supporter');
-            $table->integer('currency');
+            $table->string('name');
             $table->string('score');
-            $table->boolean('admin');
-            $table->boolean('dailycode');
+            $table->integer('userid')->unsigned();
+            $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -36,6 +31,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('leaderboards');
     }
 }

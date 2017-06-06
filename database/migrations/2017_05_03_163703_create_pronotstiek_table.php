@@ -13,22 +13,25 @@ class CreatePronotstiekTable extends Migration
      */
     public function up()
     {
-        Schema::create('pronostieken', function (Blueprint $table) {
+        Schema::create('pronostieks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('date');
-            $table->string('team1');
-            $table->string('team2');
             $table->string('firsthalfvic');
             $table->string('victorious');
             $table->string('score1');
             $table->string('score2');
+            $table->boolean('bothteamscore');
+            $table->boolean('goalguess');
             $table->string('firstgoal');
+            $table->boolean('winwithoutextension');
+            $table->string('cards');
             $table->string('corners');
             $table->boolean('penalties');
+            $table->string('schiftings');
             $table->integer('userid')->unsigned();
             $table->foreign('userid')->references('id')->on('users')->onDelete('cascade');
             $table->integer('matchid')->unsigned();
             $table->foreign('matchid')->references('id')->on('matches')->onDelete('cascade');
+            $table->integer('score');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -41,6 +44,6 @@ class CreatePronotstiekTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pronostieken');
+        Schema::drop('pronostieks');
     }
 }

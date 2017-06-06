@@ -62,10 +62,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $supporter = '';
+        $id = User::orderBy('id', 'desc')->first()->id;
+        $id++;
+
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['name'],
+            'usercode' => substr(md5($id),0,8),
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'supporter' => 1,
+            'currency' => 0,
+            'admin' => 0,
+            'dailycode' => 1,
         ]);
     }
 }

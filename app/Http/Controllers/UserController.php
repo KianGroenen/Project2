@@ -112,11 +112,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id = User::orderBy('id', 'desc')->first()->id;
+        $id++;
         if(!empty($request->input("username")) && !empty($request->input("email"))) {
             if(filter_var($request->input("email"), FILTER_VALIDATE_EMAIL)) {
                 $user = User::find($id);
                 $user->username = $request->input("username");
-                $user->usercode = bcrypt($request->input("username"));
+                $user->usercode = substr(md5($id),0,8);
                 if (!empty($request->input("password"))) {
                     $user->password = bcrypt($request->input("password"));
                 }

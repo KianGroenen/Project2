@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index');
+
+// USERS
 Route::get('users', 'UserController@index');
 Route::post('users/delete/{id}', 'UserController@delete');
 Route::get('user/{id}', 'UserController@edit');
@@ -24,7 +26,16 @@ Route::post('user/{id}/update', 'UserController@update');
 Route::get('users/register', 'UserController@create');
 Route::post('user/store', 'UserController@store');
 
+// PRONOSTIEK
+Route::get('pronostiek/{id}/create', 'PronostiekController@create');
+Route::post('pronostiek/store', 'PronostiekController@store');
 
-//SPOTIFY
-Route::get('/artists', 'ArtistController@index');
-Route::get('/artists/{id}', 'ArtistController@show');
+// MATCHES
+Route::get('match', 'MatchController@index');
+Route::get('match/create', 'MatchController@create');
+Route::post('match/store', 'MatchController@store');
+Route::get('match/{id}', 'MatchController@edit');
+Route::post('match/{id}/update', 'MatchController@update');
+
+// API
+Route::get('api/getall', 'ApiController@getAll');

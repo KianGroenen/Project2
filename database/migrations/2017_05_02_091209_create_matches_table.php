@@ -22,10 +22,14 @@ class CreateMatchesTable extends Migration
             $table->string('victorious');
             $table->string('score1');
             $table->string('score2');
+            $table->boolean('bothteamscore');
+            $table->boolean('goalguess');
             $table->string('firstgoal');
+            $table->boolean('winwithoutextension');
+            $table->string('cards');
             $table->string('corners');
             $table->boolean('penalties');
-            $table->string('timegoal1');
+            $table->string('schiftings');
             $table->rememberToken();
             $table->timestamps();
         });
