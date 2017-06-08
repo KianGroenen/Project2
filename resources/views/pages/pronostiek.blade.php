@@ -17,13 +17,13 @@
             <div class="col-md-10 col-md-offset-1">
                 <form enctype="multipart/form-data" action="/pronostiek/store" method="POST">
                     <h1>Create Pronostiek</h1>
-                    @if( Session::has('msgUserSuccess') )
-                        <div class="alert alert-success" role="alert">
-                            {{ Session::get('msgUserSuccess') }}
-                        </div>
-                    @elseif( Session::has('msgUserError'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ Session::get('msgUserError') }}
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
                     <div class="form-group">

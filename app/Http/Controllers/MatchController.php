@@ -9,6 +9,7 @@ use App\Match;
 use App\Pronostiek;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Redirect;
 
 class MatchController extends Controller
 {
@@ -63,6 +64,7 @@ class MatchController extends Controller
                 'schiftings' => "",
             ]
         );
+        return Redirect::to('home');
     }
 
     /**

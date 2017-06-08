@@ -10,6 +10,7 @@ use Auth;
 use Carbon\Carbon;
 use DB;
 
+
 class HomeController extends Controller
 {
     /**

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pronostiek;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class PronostiekController extends Controller
 {
@@ -43,6 +44,17 @@ class PronostiekController extends Controller
         $pronostiek = new Pronostiek();
         $userid = Auth::user()->id;
 
+        $this->validate($request, [
+                'firsthalfvic' => 'required',
+                'victorious' => 'required',
+                'score1' => 'required|integer',
+                'score2' => 'required|integer',
+                'firstgoal' => 'required',
+                'cards' => 'required',
+                'corners' => 'required',
+                'schiftings' => 'required',
+            ]);
+
         $pronostiek::create(
             [
                 'firsthalfvic' => $request->input("firsthalfvic"),
@@ -62,6 +74,7 @@ class PronostiekController extends Controller
                 'score' => 0,
             ]
         );
+        return Redirect::to('home');
     }
 
     /**

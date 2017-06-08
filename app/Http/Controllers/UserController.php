@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -45,6 +46,12 @@ class UserController extends Controller
         $id = User::orderBy('id', 'desc')->first()->id;
         $id++;
 
+        $this->validate($request, [
+                'username' => 'required|unique',
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+
         if (!empty($request->input("supporter"))) {
             $supporter = 1;
         } else {
@@ -67,16 +74,9 @@ class UserController extends Controller
                         'dailycode' => 1,
                     ]
                 );
-                return var_dump("Success");
             }
-            else {
-                // invalid address
-                return var_dump("Invalid Adress");
-            }
-
-        } else {
-            return var_dump("Error");
         }
+        return Redirect::to('home');
     }
 
     /**

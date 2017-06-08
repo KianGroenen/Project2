@@ -5,14 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
                 @if (Auth::User())
                     <div class="user">
                         <p>{{Auth::User()->username}}</p>
+                        @include('modals.logoutModal')
                         <!-- IMG HIER TOEVOEGEN -->
                     </div>
                 @endif
@@ -31,18 +27,10 @@
                 <div class="pronostiekGeschiedenis">
                         @foreach($pronostieken as $pronostiek)
                             <h1>{{$pronostiek->team1}} - {{$pronostiek->team2}}</h1>
-                            <p>{{$pronostiek->firsthalfvic}}</p>
-                            <p>{{$pronostiek->victorious}}</p>
+                            <p>{{$pronostiek->date}}</p>
                             <p>{{$pronostiek->score1}}</p>
                             <p>{{$pronostiek->score2}}</p>
-                            <p>{{$pronostiek->bothteamscore}}</p>
-                            <p>{{$pronostiek->goalguess}}</p>
-                            <p>{{$pronostiek->firstgoal}}</p>
-                            <p>{{$pronostiek->winwithoutextension}}</p>
-                            <p>{{$pronostiek->cards}}</p>
-                            <p>{{$pronostiek->corners}}</p>
-                            <p>{{$pronostiek->penalties}}</p>
-                            <p>{{$pronostiek->schiftings}}</p>
+                            <p>{{$pronostiek->score}}</p>
                         @endforeach
                 </div>
                 <a href="/pronostiek/{{$match->id}}/create" class="btn btn-primary">Pronostiek Maken</a>
