@@ -201,6 +201,5 @@ class MatchController extends Controller
                 $score = 0;
             }
         }
-        var_dump($score);
     }
 }

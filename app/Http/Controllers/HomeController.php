@@ -38,8 +38,7 @@ class HomeController extends Controller
         $match = Match::whereBetween('date', array($currentdate, $weeksfromnow))->first();
         $p = DB::table('pronostieks')
                 ->leftJoin('matches', 'pronostieks.matchid', '=', 'matches.id')
-                ->where('userid', Auth::user()
-                ->id)->distinct()->get();
+                ->where('userid', Auth::user()->id)->distinct()->get();
         // if no upcomming matches --> empty --> error
         $firstMatch = DB::table('matches')->where('date', '>', Carbon::now())->orderBy('date', 'desc')->first();
         $fmdate = new Carbon($firstMatch->date);

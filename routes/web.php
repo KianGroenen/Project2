@@ -37,5 +37,5 @@ Route::post('match/store', 'MatchController@store');
 Route::get('match/{id}', 'MatchController@edit');
 Route::post('match/{id}/update', 'MatchController@update');
 
-// API
-Route::get('api/getall', 'ApiController@getAll');
+// LOGOUT
+Route::get('logout', 'LoginController@logout');

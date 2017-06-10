@@ -72,6 +72,7 @@ class UserController extends Controller
                         'currency' => 0,
                         'admin' => 0,
                         'dailycode' => 1,
+                        'score' => 0,
                     ]
                 );
             }
